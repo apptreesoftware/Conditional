@@ -1,4 +1,4 @@
-package orozco.condition;
+package apptree.condition;
 
 public enum Operator {
     AND,

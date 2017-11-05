@@ -1,7 +1,7 @@
-package orozco.condition;
+package apptree.condition;
 
-import orozco.condition.conditions.BasicCondition;
-import orozco.condition.functional.interfaces.ConditionSupplier;
+import apptree.condition.functional.interfaces.ConditionSupplier;
+import apptree.condition.conditions.BasicCondition;
 
 public class ConditionBuilder<T> {
     private Conditional<T> conditional;

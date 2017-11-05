@@ -1,4 +1,4 @@
-package orozco.condition.functional.interfaces;
+package apptree.condition.functional.interfaces;
 
 @FunctionalInterface
 public interface ConditionSupplier<T> {

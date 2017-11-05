@@ -1,7 +1,7 @@
-package orozco.condition.conditions;
+package apptree.condition.conditions;
 
 
-import orozco.condition.Condition;
+import apptree.condition.Condition;
 
 public class DefaultCondition implements Condition {
     @Override

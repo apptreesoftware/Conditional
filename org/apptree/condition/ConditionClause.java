@@ -1,4 +1,4 @@
-package orozco.condition;
+package apptree.condition;
 
 public class ConditionClause<T> implements Condition<T> {
     private Condition<T> left;

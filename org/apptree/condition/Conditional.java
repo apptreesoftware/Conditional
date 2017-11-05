@@ -1,12 +1,7 @@
-package orozco.condition;
+package apptree.condition;
 
-
-import orozco.condition.conditions.BasicCondition;
-import orozco.condition.functional.interfaces.ConditionSupplier;
-import orozco.condition.functional.interfaces.FuncParam;
 
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 public class Conditional<T> implements Condition<T> {

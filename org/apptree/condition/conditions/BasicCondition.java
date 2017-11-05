@@ -1,8 +1,8 @@
-package orozco.condition.conditions;
+package apptree.condition.conditions;
 
 
-import orozco.condition.Condition;
-import orozco.condition.functional.interfaces.ConditionSupplier;
+import apptree.condition.functional.interfaces.ConditionSupplier;
+import apptree.condition.Condition;
 
 public class BasicCondition<T> implements Condition<T> {
     ConditionSupplier<T> basicCondition;
