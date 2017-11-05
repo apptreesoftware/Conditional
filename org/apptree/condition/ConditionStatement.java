@@ -1,6 +1,7 @@
 package apptree.condition;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class ConditionStatement<T> implements Condition<T> {
@@ -8,6 +9,10 @@ public class ConditionStatement<T> implements Condition<T> {
 
     public ConditionStatement(List<Condition<T>> conditionList) {
         this.conditionList = conditionList;
+    }
+
+    public ConditionStatement(Condition<T>[] conditionList) {
+        this.conditionList = Arrays.asList(conditionList);
     }
 
     public List<Condition<T>> getConditionList() {
