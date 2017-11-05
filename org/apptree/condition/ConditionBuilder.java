@@ -33,8 +33,8 @@ public class ConditionBuilder<T> {
         return this;
     }
 
-    public ConditionBuilder<T> with(Operator operator, Condition<T> conditionOne,
-                                    Condition<T> conditionTwo) {
+    public ConditionBuilder<T> with(Condition<T> conditionOne,
+                                    Condition<T> conditionTwo, Operator operator) {
         return new ConditionBuilder<T>(new ConditionClause<>(conditionOne, conditionTwo, operator));
     }
 

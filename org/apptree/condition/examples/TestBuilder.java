@@ -37,8 +37,8 @@ public class TestBuilder {
 
         boolean last = Conditional
             .<Car>start(car -> car.getColor().equalsIgnoreCase("green"))
-            .with(Operator.OR, car -> car.getDurability() > 100,
-                  car -> car.getName().equalsIgnoreCase("green"))
+            .with(car -> car.getDurability() > 100,
+                  car -> car.getName().equalsIgnoreCase("green"), Operator.OR)
             .build().evaluate(carOne);
 
         System.out.println(last);
