@@ -2,7 +2,7 @@ package apptree.condition;
 
 import java.util.Collection;
 
-public interface Condition<T> {
+public interface Condition<T> extends Messager {
     boolean evaluate(T t);
 
 

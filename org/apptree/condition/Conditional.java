@@ -2,19 +2,18 @@ package apptree.condition;
 
 
 import apptree.condition.conditions.BasicCondition;
-import apptree.condition.functional.interfaces.ConditionSupplier;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 public class Conditional<T> implements Condition<T> {
-    private List<Condition<T>> conditions;
+    private Map<Condition<T>, String> conditionMap;
 
     Conditional() {
 
     }
 
-    public static <T> ConditionBuilder<T> start(ConditionSupplier<T> conditionSupplier) {
+    public static <T> ConditionBuilder<T> start(Condition<T> conditionSupplier) {
         return new ConditionBuilder<>(new BasicCondition<>(conditionSupplier));
     }
 
@@ -24,23 +23,26 @@ public class Conditional<T> implements Condition<T> {
     }
 
 
-    public void clearConditions() {
-        conditions = null;
+    public static <T> ConditionBuilder<T> create(Condition<T> condition, String message) {
+        return new ConditionBuilder<>(condition);
     }
 
-    List<Condition<T>> getConditions() {
-        if (conditions == null) {
-            conditions = new ArrayList<>();
-        }
-        return conditions;
+
+    public void clearConditions(){
+        this.conditionMap = null;
     }
 
-    public void setConditions(List<Condition<T>> conditions) {
-        this.conditions = conditions;
-    }
+
 
     @Override
     public boolean evaluate(T t) {
-        return evaluateStatement(t, getConditions());
+        return evaluateStatement(t, getConditionMap().keySet());
+    }
+
+    public Map<Condition<T>, String> getConditionMap() {
+        if(conditionMap == null) {
+            conditionMap = new HashMap<>();
+        }
+        return conditionMap;
     }
 }
