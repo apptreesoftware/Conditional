@@ -1,8 +1,7 @@
 # Conditional
 Conditional is a java library for creating and composing conditions
  to be validated against a given object.
- 
- #Getting started
+
  
  The target use case for this library is object validation.
  
