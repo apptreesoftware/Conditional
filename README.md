@@ -83,6 +83,7 @@ public class Main {
             .and(car -> car.year > 2015)
             .with(car -> car.mpg > 30, car -> car.topSpeed > 100, Operator.AND)
             .orWith(car -> car.mpg > 45 , car -> car.topSpeed < 80, Operator.AND)
+            .or(car -> car.year == 2017)
             .build();
 
         Car dreamCar = new Car();
