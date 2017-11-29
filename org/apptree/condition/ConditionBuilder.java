@@ -27,15 +27,17 @@ public class ConditionBuilder<T> {
         return this;
     }
 
-
-    public ConditionBuilder<T> or(Condition<T> condition, Condition<T> condition1) {
-        conditional.getConditions().add(new ConditionClause<>(condition, condition1, Operator.OR));
+    public ConditionBuilder<T> with(Condition<T> conditionOne,
+                                    Condition<T> conditionTwo, Operator operator) {
+        this.conditional.getConditions()
+                        .add(new ConditionClause<>(conditionOne, conditionTwo, operator));
         return this;
     }
 
-    public ConditionBuilder<T> with(Condition<T> conditionOne,
-                                    Condition<T> conditionTwo, Operator operator) {
-        return new ConditionBuilder<T>(new ConditionClause<>(conditionOne, conditionTwo, operator));
+    public ConditionBuilder<T> orWith(Condition<T> conditionOne,
+                                      Condition<T> conditionTwo, Operator operator) {
+        this.addOrCondition(new ConditionClause<>(conditionOne, conditionTwo, operator));
+        return this;
     }
 
 
