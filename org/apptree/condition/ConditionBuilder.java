@@ -1,10 +1,5 @@
 package apptree.condition;
 
-import apptree.condition.functional.interfaces.ConditionSupplier;
-import apptree.condition.conditions.BasicCondition;
-
-import java.util.Arrays;
-
 public class ConditionBuilder<T> {
     private Conditional<T> conditional;
 

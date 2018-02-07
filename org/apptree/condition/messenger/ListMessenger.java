@@ -27,4 +27,8 @@ public class ListMessenger implements Messenger {
     public Collection<String> getMessages() {
         return data;
     }
+
+    public boolean hasMessages() {
+        return data != null && !data.isEmpty();
+    }
 }

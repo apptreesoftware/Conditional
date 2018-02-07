@@ -2,8 +2,6 @@ package apptree.condition.examples;
 
 import apptree.condition.Condition;
 import apptree.condition.ConditionStatement;
-import apptree.condition.Conditional;
-import apptree.condition.Operator;
 import apptree.condition.conditions.BasicCondition;
 import apptree.condition.examples.models.Car;
 import apptree.condition.messenger.ListMessenger;
