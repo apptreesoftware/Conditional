@@ -1,46 +1,35 @@
 package apptree.condition.examples;
 
 import apptree.condition.Condition;
+import apptree.condition.ConditionStatement;
 import apptree.condition.Conditional;
 import apptree.condition.Operator;
 import apptree.condition.conditions.BasicCondition;
 import apptree.condition.examples.models.Car;
+import apptree.condition.messenger.ListMessenger;
+import apptree.condition.messenger.Messenger;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class TestBuilder {
 
 
     public static void main(String[] args) {
-        Condition<Car> carBuilder = Conditional.<Car>start(car -> car.getMpg() > 20)
-            .and(car -> car.getColor().equalsIgnoreCase("green"))
-            .or(car -> car.getColor().equalsIgnoreCase("red"))
-            .build();
-
-
-        Car carOne = new Car();
-        carOne.setMpg(30);
-        carOne.setDurability(100);
-        carOne.setColor("green");
-
-        Car carTwo = new Car();
-        carTwo.setMpg(30);
-        carTwo.setColor("red");
-
-
-        if (carBuilder.evaluate(carOne)) {
-            System.out.println("Car One");
+        Messenger messenger = new ListMessenger();
+        Car car = new Car();
+        car.color = "red";
+        Condition<Car> blueCondition = BasicCondition.withCondition(car1 -> car1.color.equals("Blue"), "Color is not blue");
+        Condition<Car> greenCondition = BasicCondition.withCondition(car1 -> car1.color.equals("Green"), "Color is not green");
+        Condition<Car> redCondition = BasicCondition.withCondition(car1 -> car1.color.equals("red"), "Color is not red");
+        List<Condition<Car>> conditionList = new ArrayList<>();
+        conditionList.add(blueCondition);
+        conditionList.add(greenCondition);
+        conditionList.add(redCondition);
+        Condition<Car> carCondition = new ConditionStatement<Car>(conditionList);
+        carCondition.evaluate(car, messenger);
+        for(String message:messenger.getMessages()) {
+            System.out.println(message);
         }
-
-        if (carBuilder.evaluate(carTwo)) {
-            System.out.println("Car Two");
-        }
-
-
-        boolean last = Conditional
-            .<Car>start(car -> car.getColor().equalsIgnoreCase("green"))
-            .with(car -> car.getDurability() > 100,
-                  car -> car.getName().equalsIgnoreCase("green"), Operator.OR)
-            .build().evaluate(carOne);
-
-        System.out.println(last);
     }
 }

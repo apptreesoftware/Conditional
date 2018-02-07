@@ -1,5 +1,7 @@
 package apptree.condition;
 
+import apptree.condition.messenger.Messenger;
+
 public class ConditionClause<T> implements Condition<T> {
     private Condition<T> left;
     private Condition<T> right;
@@ -36,7 +38,7 @@ public class ConditionClause<T> implements Condition<T> {
     }
 
     @Override
-    public boolean evaluate(T t) {
-        return evaluateClause(t, left, right, operator);
+    public boolean evaluate(T t, Messenger messenger) {
+        return evaluateClause(t, left, right, operator, messenger);
     }
 }

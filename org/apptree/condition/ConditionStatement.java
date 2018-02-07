@@ -1,5 +1,7 @@
 package apptree.condition;
 
+import apptree.condition.messenger.Messenger;
+
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -27,7 +29,7 @@ public class ConditionStatement<T> implements Condition<T> {
     }
 
     @Override
-    public boolean evaluate(T t) {
-        return evaluateStatement(t, getConditionList());
+    public boolean evaluate(T t, Messenger messenger) {
+        return evaluateStatement(t, getConditionList(), messenger);
     }
 }

@@ -3,6 +3,7 @@ package apptree.condition;
 
 import apptree.condition.conditions.BasicCondition;
 import apptree.condition.functional.interfaces.ConditionSupplier;
+import apptree.condition.messenger.Messenger;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -40,7 +41,7 @@ public class Conditional<T> implements Condition<T> {
     }
 
     @Override
-    public boolean evaluate(T t) {
-        return evaluateStatement(t, getConditions());
+    public boolean evaluate(T t, Messenger messenger) {
+        return evaluateStatement(t, getConditions(), messenger);
     }
 }
