@@ -1,35 +1,35 @@
-package apptree.condition.examples
+package apptree.condition.examples;
 
-import apptree.condition.Condition
-import apptree.condition.ConditionStatement
-import apptree.condition.Conditional
-import apptree.condition.Operator
-import apptree.condition.conditions.BasicCondition
-import apptree.condition.examples.models.Car
-import apptree.condition.messenger.ListMessenger
-import apptree.condition.messenger.Messenger
+import apptree.condition.Condition;
+import apptree.condition.ConditionStatement;
+import apptree.condition.Conditional;
+import apptree.condition.Operator;
+import apptree.condition.conditions.BasicCondition;
+import apptree.condition.examples.models.Car;
+import apptree.condition.messenger.ListMessenger;
+import apptree.condition.messenger.Messenger;
 
-import java.util.ArrayList
+import java.util.ArrayList;
+import java.util.List;
 
-object TestBuilder {
+public class TestBuilder {
 
 
-    @JvmStatic
-    fun main(args: Array<String>) {
-        val messenger = ListMessenger()
-        val car = Car()
-        car.color = "red"
-        val blueCondition = BasicCondition.withCondition<Car>({ car1 -> car1.color == "Blue" }, "Color is not blue")
-        val greenCondition = BasicCondition.withCondition<Car>({ car1 -> car1.color == "Green" }, "Color is not green")
-        val redCondition = BasicCondition.withCondition<Car>({ car1 -> car1.color == "red" }, "Color is not red")
-        val conditionList = ArrayList<Condition<Car>>()
-        conditionList.add(blueCondition)
-        conditionList.add(greenCondition)
-        conditionList.add(redCondition)
-        val carCondition = ConditionStatement(conditionList)
-        carCondition.evaluate(car, messenger)
-        for (message in messenger.messages) {
-            println(message)
+    public static void main(String[] args) {
+        Messenger messenger = new ListMessenger();
+        Car car = new Car();
+        car.color = "red";
+        Condition<Car> blueCondition = BasicCondition.withCondition(car1 -> car1.color.equals("Blue"), "Color is not blue");
+        Condition<Car> greenCondition = BasicCondition.withCondition(car1 -> car1.color.equals("Green"), "Color is not green");
+        Condition<Car> redCondition = BasicCondition.withCondition(car1 -> car1.color.equals("red"), "Color is not red");
+        List<Condition<Car>> conditionList = new ArrayList<>();
+        conditionList.add(blueCondition);
+        conditionList.add(greenCondition);
+        conditionList.add(redCondition);
+        Condition<Car> carCondition = new ConditionStatement<Car>(conditionList);
+        carCondition.evaluate(car, messenger);
+        for(String message:messenger.getMessages()) {
+            System.out.println(message);
         }
     }
 }
