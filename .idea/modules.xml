@@ -3,6 +3,8 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/Conditional.iml" filepath="$PROJECT_DIR$/Conditional.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Conditional_main.iml" filepath="$PROJECT_DIR$/.idea/modules/Conditional_main.iml" group="Conditional" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Conditional_test.iml" filepath="$PROJECT_DIR$/.idea/modules/Conditional_test.iml" group="Conditional" />
     </modules>
   </component>
 </project>

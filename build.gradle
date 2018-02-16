@@ -1,0 +1,38 @@
+apply plugin: 'idea'
+//and standard one
+apply plugin: 'java'
+
+apply plugin: 'maven-publish'
+
+// In this section you declare where to find the dependencies of your project
+repositories {
+    jcenter()
+    mavenLocal()
+}
+
+dependencies {
+}
+
+
+
+publishing {
+    repositories {
+        maven {
+            url "s3://releases.mvn-repo.apptreesoftware.com"
+            credentials(AwsCredentials) {
+                accessKey awsAccessKey
+                secretKey awsSecretKey
+            }
+        }
+    }
+}
+
+publishing {
+    publications {
+        maven(MavenPublication) {
+            groupId 'com.apptreesoftware'
+            version '1.0.0'
+            from components.java
+        }
+    }
+}
