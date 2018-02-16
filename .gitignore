@@ -4,3 +4,10 @@
 out/
 .idea/
 Conditional.iml
+gradle.properties
+.gradle/
+Conditional.ipr
+Conditional.iws
+build/
+src/
+target/
